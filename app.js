@@ -3,7 +3,7 @@ $(function() {
 	$('form').submit(function(e) {
 		e.preventDefault();
 		var text = $('#user-text').val(),
-			textSplit = text.split(/[^a-zA-Z0-9']+/ig);
+			textSplit = text.trim().split(/[^a-zA-Z0-9']+/ig).filter(function(el) { return el.length !== 0; });
 
 		$('.text-report dd').empty();
 
@@ -22,6 +22,7 @@ function uniqueWordCount(textSplit) {
 }
 
 function averageWordLength(textSplit) {
+	debugger;
 	var numChars = 0;
 
 	for (var i = 0; i < textSplit.length; i++) {
@@ -32,11 +33,11 @@ function averageWordLength(textSplit) {
 }
 
 function averageSentenceLength(text) {
-	var textMatch = text.match(/[^\s][^\.!\?\n]+[\.!\?(?:\s)+]/ig),
+	var textMatch = text.trim().match(/[^\s][^\.!\?\n]+[\.!\?(?:\s)+]/ig).filter(function(el) { return el.length !== 0; }),
 		wordCount = 0;
 
 	for (var i = 0; i < textMatch.length; i++) {
-		var sentenceSplit = textMatch[i].split(/[^a-zA-Z0-9']+/ig);
+		var sentenceSplit = textMatch[i].trim().split(/[^a-zA-Z0-9']+/ig).filter(function(el) { return el.length !== 0; });
 
 		wordCount += sentenceSplit.length;
 	}
