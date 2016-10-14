@@ -35,8 +35,6 @@ function averageSentenceLength(text) {
 	var textMatch = text.match(/[^\s][^\.!\?\n]+[\.!\?(?:\s)+]/ig),
 		wordCount = 0;
 
-	console.log(textMatch);
-
 	for (var i = 0; i < textMatch.length; i++) {
 		var sentenceSplit = textMatch[i].split(/[^a-zA-Z0-9']+/ig);
 
